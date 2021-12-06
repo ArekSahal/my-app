@@ -1,23 +1,28 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { useState } from "react";
+import Card from "./card"
+import DayForm from "./form"
+import Picker from "./picker"
+import Car from "./car"
 
 function App() {
+  const [date, setDate] = useState("100");
+  
+
+  let cars_data = [["218009", "Lamborghini Urus"],["425021", "Lamborghini Aventador"],["267569", "Lamborghini Huracán EVO "],["3300000", "Lamborghini Sián "],["10000000", "arek"]]
+  const [target_price, setTarget] = useState("")
+  const [target_car, setTargetCar] = useState("")
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Picker setTarget={setTarget} setTargetCar={setTargetCar} cars_data={cars_data} />
+      <Car car={target_car} />
+      <DayForm setDate={setDate}/>
+      <Card target={date} target_price={target_price} target_car={target_car}/>
+
+      <h3>
+      </h3>
     </div>
   );
 }
